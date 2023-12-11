@@ -1,16 +1,9 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import { useAppInsightsContext, useTrackEvent } from "@microsoft/applicationinsights-react-js";
+import { EngagementTracker } from './EngagementTracker';
 
 const TestComponent = () => {
-  const appInsights = useAppInsightsContext();
   const [testNumber, setTestNumber] = useState(0);
-  
-  const trackEvent = useTrackEvent(appInsights, "TestNumber", testNumber);
-  
-  useEffect(() => {
-    trackEvent(testNumber);
-  }, [testNumber, trackEvent]);
 
   function onClick() {
     let curTestNumber = testNumber;
@@ -21,6 +14,7 @@ const TestComponent = () => {
   }
 
   return (
+    <EngagementTracker name={TestComponent.name}>
     <div className="App">
       <h1>Test <code>useAppInsightsContext</code></h1>
       <div>
@@ -29,6 +23,7 @@ const TestComponent = () => {
         <button onClick={onClick2}>TEST</button>
       </div>
     </div>
+    </EngagementTracker>
   );
 };
 

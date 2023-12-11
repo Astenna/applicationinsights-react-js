@@ -1,11 +1,8 @@
 import {ApplicationInsights, ITelemetryItem} from '@microsoft/applicationinsights-web';
-import {ReactPlugin} from '@microsoft/applicationinsights-react-js';
 
-const reactPlugin = new ReactPlugin();
 const appInsights = new ApplicationInsights({
   config: {
-    connectionString: "instrumentationKey=test",
-    extensions: [reactPlugin],
+    connectionString: "InstrumentationKey=<TO-BE-REPLACED>",
     enableAutoRouteTracking: true,
     disableAjaxTracking: false,
     autoTrackPageVisitTime: true,
@@ -21,7 +18,7 @@ appInsights.addTelemetryInitializer((env:ITelemetryItem) => {
     env.tags["ai.cloud.role"] = "testTag";
 });
 
-export { reactPlugin, appInsights };
+export { appInsights };
 
 
 

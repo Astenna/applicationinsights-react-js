@@ -1,8 +1,8 @@
 import React from 'react';
 import { AppInsightsContext } from '@microsoft/applicationinsights-react-js';
-import { reactPlugin } from './ApplicationInsightsService';
 import TestComponent from './TestComponent';
 import './App.css';
+import { EngagementTracker } from './EngagementTracker';
 
 function App() {
   return (
@@ -12,9 +12,7 @@ function App() {
           Home
         </p>
       </header>
-      <AppInsightsContext.Provider value={reactPlugin}>
         <TestComponent/>
-      </AppInsightsContext.Provider>
     </div>
   );
 }
